@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE LIMES SYSTEM "limes.dtd">
+<LIMES>
+
+
+	<PREFIX>
+        <NAMESPACE>http://www.w3.org/2002/07/owl#</NAMESPACE>
+        <LABEL>owl</LABEL>
+    </PREFIX>
+
+    <PREFIX>
+        <NAMESPACE>http://catalogus-professorum.org/cpd/</NAMESPACE>
+        <LABEL>lipsia</LABEL>
+    </PREFIX>
+    
+     <PREFIX>
+        <NAMESPACE>http://uni-helmstedt.hab.de/cph/model/</NAMESPACE>
+        <LABEL>helmstedt</LABEL>
+    </PREFIX>
+    
+    <PREFIX>
+        <NAMESPACE>http://www.w3.org/2000/01/rdf-schema#</NAMESPACE>
+        <LABEL>rdfs</LABEL>
+    </PREFIX>
+
+    <SOURCE>
+        <ID>lipsiensium-data</ID>
+        <ENDPOINT>lipsiensium.ttl</ENDPOINT>
+        <VAR>?x</VAR>
+        <PAGESIZE>2000</PAGESIZE>
+        <RESTRICTION>?x a lipsia:Person</RESTRICTION>
+        <PROPERTY>rdfs:label RENAME name</PROPERTY>
+        <PROPERTY>lipsia:surname RENAME surname</PROPERTY>
+        <PROPERTY>lipsia:forename RENAME forename</PROPERTY>
+		<TYPE>TURTLE</TYPE>
+    </SOURCE>
+
+    <TARGET>
+        <ID>helmstedt-data</ID>
+        <ENDPOINT>dump-uni-helmstedt.de.nt</ENDPOINT>
+        <VAR>?y</VAR>
+        <PAGESIZE>2000</PAGESIZE>
+        <RESTRICTION>?y a helmstedt:Person</RESTRICTION>
+        <PROPERTY>rdfs:label RENAME name</PROPERTY>
+        <PROPERTY>helmstedt:surname RENAME surname</PROPERTY>
+        <PROPERTY>helmstedt:forename RENAME forename</PROPERTY>
+	<TYPE>N-TRIPLE</TYPE>
+    </TARGET>
+
+    <MLALGORITHM>
+        <NAME>wombat simple</NAME>
+        <TYPE>unsupervised</TYPE>
+        <PARAMETER> 
+            <NAME>max execution time in minutes</NAME>
+            <VALUE>60</VALUE>
+        </PARAMETER>
+    </MLALGORITHM>
+    
+    <ACCEPTANCE>
+        <THRESHOLD>0.8</THRESHOLD>
+        <FILE>professor_catalog_verynear.nt</FILE>
+        <RELATION>owl:sameAs</RELATION>
+    </ACCEPTANCE>
+
+    <REVIEW>
+        <THRESHOLD>0.5</THRESHOLD>
+        <FILE>professor_catalog_near.nt</FILE>
+        <RELATION>owl:sameAs</RELATION>
+    </REVIEW>
+
+    <EXECUTION>
+        <REWRITER>default</REWRITER>
+        <PLANNER>default</PLANNER>
+        <ENGINE>default</ENGINE>
+    </EXECUTION>
+
+    <OUTPUT>TAB</OUTPUT>
+</LIMES>
