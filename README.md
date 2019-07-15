@@ -1,2 +1,2 @@
 # helmstedt-leipzig-dataset
-THe full dataset is available at https://gitlab.imn.htwk-leipzig.de/emarx/pcp-on-web.
+The full dataset is available at https://gitlab.imn.htwk-leipzig.de/emarx/pcp-on-web.
